@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e9bd1d33.css",
+    "main.js": "./static/js/main.e586e4fd.js",
+    "static/media/categories--tablets.png": "./static/media/categories--tablets.9eb3382dfc7b5b48f49d.png",
+    "static/media/banner-tablets.png": "./static/media/banner-tablets.3ab0c9b71cae9e04b094.png",
+    "static/media/banner--mobile.png": "./static/media/banner--mobile.271803be369b5f47b9ff.png",
+    "static/media/login-bg.jpg": "./static/media/login-bg.19cbaf433c5cd13acc2c.jpg",
+    "static/media/categories--phones.png": "./static/media/categories--phones.b1f71dbff42cdc825224.png",
+    "static/media/banner-phones.png": "./static/media/banner-phones.f509ad3c8ed651749cb5.png",
+    "static/media/banner-accessories.png": "./static/media/banner-accessories.6a3884f3f1091702f8ed.png",
+    "static/media/logo.svg": "./static/media/logo.3c6bd1886792ca6da9d5.svg",
+    "static/media/product-not-found.png": "./static/media/product-not-found.8214da88616b09290166.png",
+    "static/media/Mont-Regular.otf": "./static/media/Mont-Regular.1d26d89f7339866d3133.otf",
+    "static/media/Mont-SemiBold.otf": "./static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
+    "static/media/Mont-Bold.otf": "./static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "static/media/categories--accessories.png": "./static/media/categories--accessories.05d41563b7e8761ac8c0.png",
+    "static/media/page-not-found.png": "./static/media/page-not-found.6f5b123471bc09721371.png",
+    "static/media/cart-is-empty.png": "./static/media/cart-is-empty.86ebaf664449a2f61e5e.png",
+    "static/media/cart.svg": "./static/media/cart.f9632dca8fdaed9bb696.svg",
+    "static/media/favorite.svg": "./static/media/favorite.670cf5136eb8aecd15dc.svg",
+    "static/media/home.svg": "./static/media/home.d4c29e4f137b3a79235a.svg",
+    "static/media/favorite-filled.svg": "./static/media/favorite-filled.d554a185325e4fb06092.svg",
+    "static/media/close.svg": "./static/media/close.3ea864f59fecb8596c4b.svg",
+    "static/media/menu.svg": "./static/media/menu.744ac0b04d84e4feeeb5.svg",
+    "static/media/plus.svg": "./static/media/plus.dea157243cc9d361ac05.svg",
+    "static/media/arrow-right.svg": "./static/media/arrow-right.e028d3889646e0b5e56c.svg",
+    "static/media/arrow-down.svg": "./static/media/arrow-down.98c9dd6d98b47f2f1977.svg",
+    "static/media/arrow-up.svg": "./static/media/arrow-up.1ea6958a07717117d3d5.svg",
+    "static/media/arrow-right-normal.svg": "./static/media/arrow-right-normal.6ea4dc179740ba122e44.svg",
+    "static/media/arrow-left-normal.svg": "./static/media/arrow-left-normal.6b099a50c157f16fe043.svg",
+    "static/media/minus.svg": "./static/media/minus.cecb4be39afa7b933ec1.svg",
+    "index.html": "./index.html",
+    "main.e9bd1d33.css.map": "./static/css/main.e9bd1d33.css.map",
+    "main.e586e4fd.js.map": "./static/js/main.e586e4fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9bd1d33.css",
+    "static/js/main.e586e4fd.js"
+  ]
+}
