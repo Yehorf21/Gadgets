@@ -8,6 +8,7 @@ const app = express();
 
 const corsOptions = {
   origin: process.env.CLIENT_ORIGIN,
+  methods: 'GET, POST',
   credentials: true,
 };
 
