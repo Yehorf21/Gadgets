@@ -23,24 +23,15 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // handle this one better
-    if (!email.trim() || !password.trim()) {
-      return;
-    }
+    create({ email, password })
+      .then(response => {
+        localStorage.setItem('auth_token', response.data.token);
 
-    const response = await create({ email, password });
-
-    if (response.status === 401) {
-      addAlert('error', response.data.message);
-
-      return;
-    }
-
-    localStorage.setItem('auth_token', response.data.token);
-
-    addAlert('success', response.data.message);
-    setIsLoggedIn(true);
-    setData(initialInputBody);
+        addAlert('success', response.data.message);
+        setIsLoggedIn(true);
+        setData(initialInputBody);
+      })
+      .catch(error => addAlert('error', error.response.data.message));
   };
 
   return (

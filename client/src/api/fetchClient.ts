@@ -1,6 +1,6 @@
 import { Product, ProductIncomplete } from '../types/Product';
 
-const BASE_URL = 'https://yehorf21.github.io/react_phone-catalog';
+const BASE_URL = 'https://yehorf21.github.io/Gadgets';
 
 function getData(url: string) {
   return fetch(url).then(resolve => resolve.json());
