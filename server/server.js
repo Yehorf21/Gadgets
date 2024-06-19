@@ -5,7 +5,7 @@ import 'dotenv/config.js';
 import { usersRouter } from './routes/users.routes.js';
 
 const app = express();
-const port = +process.env.SERVER_PORT || 4000;
+const port = +process.env.PORT || 4000;
 
 const corsOptions = {
   origin: process.env.CLIENT_ORIGIN,
