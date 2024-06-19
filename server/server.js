@@ -5,6 +5,7 @@ import 'dotenv/config.js';
 import { usersRouter } from './routes/users.routes.js';
 
 const app = express();
+const port = +process.env.SERVER_PORT || 4000;
 
 const corsOptions = {
   origin: process.env.CLIENT_ORIGIN,
@@ -17,6 +18,6 @@ app.use(cors(corsOptions));
 
 app.use('/users', usersRouter);
 
-app.listen(+process.env.SERVER_PORT, () => {
-  console.log(`Server is running on port ${process.env.SERVER_PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 })
