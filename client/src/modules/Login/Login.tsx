@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { CSSProperties, useState } from 'react';
 
 import { create } from '../../api/users';
 import { addAlert } from '../../utils/helpers/helpers';
+
+import { DotLoader } from 'react-spinners';
 
 interface Props {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +16,13 @@ const initialInputBody = {
 
 export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
   const [data, setData] = useState(initialInputBody);
+  const [isLoading, setIsLoading] = useState(false);
   const { email, password } = data;
+
+  const override: CSSProperties = {
+    display: 'block',
+    margin: '0 auto',
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData(body => ({ ...body, [e.target.type]: e.target.value }));
@@ -22,6 +30,8 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     create({ email, password })
       .then(response => {
@@ -31,7 +41,8 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
         setIsLoggedIn(true);
         setData(initialInputBody);
       })
-      .catch(error => addAlert('error', error.response.data.message));
+      .catch(error => addAlert('error', error.response.data.message))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -57,7 +68,18 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
           />
         </div>
 
-        <button className="login__button">Submit</button>
+        <button className="login__button">
+          {isLoading ? (
+            <DotLoader
+              loading={isLoading}
+              color="#FFF"
+              size={32}
+              cssOverride={override}
+            />
+          ) : (
+            'Submit'
+          )}
+        </button>
       </form>
 
       <div className="login__block" />

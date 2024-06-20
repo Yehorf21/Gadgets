@@ -33,7 +33,7 @@ export const Footer: React.FC<Props> = ({ setIsLoggedIn }) => {
         </a>
 
         <a
-          href="mailto:lenovozt3012@gmail.com"
+          href="mailto:feshchenkoye@gmail.com"
           className="footer__link footer__link--contacts"
           target="_blank"
           rel="noreferrer"
