@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://gadgets-production.up.railway.app/',
+  baseURL: 'https://gadgets-fbwi.onrender.com/',
 });
 
 interface User {
