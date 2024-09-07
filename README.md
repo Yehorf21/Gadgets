@@ -2,6 +2,8 @@
 
 A full-stack e-commerce website with user login logic, database management, and most essential front-end features.
 
+Since the back-end is on a free plan, it takes around 40-60 seconds for it to wake up, so, the initial login / signup will take some time.
+
 ## Features
 
 - **User Authentication:** Secure user authentication system allowing users to sign up and log in securely. JWT tokens are stored in local storage of the user, after they log in / sign up, and removed on the logout.

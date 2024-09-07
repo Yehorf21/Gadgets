@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import './App.scss';
 import { fetchAllProducts } from './api/fetchClient';
@@ -24,9 +24,12 @@ import { Login } from './modules/Login';
 
 export const App = () => {
   const dispatch = useAppDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { products, favorites, cart } = useAppSelector(state => state.products);
   const categories: Category[] = ['phones', 'tablets', 'accessories'];
+
+  const { pathname } = useLocation();
+
+  const isAuthOpen = pathname === '/auth';
 
   /* responsiveness start */
 
@@ -45,14 +48,6 @@ export const App = () => {
   /* responsiveness end */
 
   /* local storage start */
-
-  useEffect(() => {
-    const authToken = localStorage.getItem('auth_token');
-
-    if (authToken) {
-      setIsLoggedIn(true);
-    }
-  }, []);
 
   const displayedFavorites = useMemo(() => {
     return handleLocalStorage('favorites');
@@ -107,59 +102,57 @@ export const App = () => {
 
   return (
     <div className="App">
-      {isLoggedIn ? (
-        <>
-          <header>
-            <NavBar />
-          </header>
+      <header>
+        <NavBar />
+      </header>
 
-          <main>
-            <Routes>
-              <Route path="/">
-                <Route index element={<HomePage />} />
+      <main>
+        <Routes>
+          <Route path="/">
+            <Route index element={<HomePage />} />
 
-                <Route path="home" element={<Navigate to="/" />} />
+            <Route path="home" element={<Navigate to="/" />} />
 
-                {categories.map(category => (
-                  <Route path={category} key={category}>
-                    <Route
-                      index
-                      element={
-                        <ProductsGrid
-                          products={getCategory(products, category)}
-                          title={transformToUpperCase(category)}
-                        />
-                      }
-                    />
-
-                    <Route path=":productId" element={<ProductDetailsPage />} />
-                  </Route>
-                ))}
-
+            {categories.map(category => (
+              <Route path={category} key={category}>
                 <Route
-                  path="favorites"
+                  index
                   element={
                     <ProductsGrid
-                      products={displayedFavorites}
-                      title="Favorites"
-                      isFavoritesPage
+                      products={getCategory(products, category)}
+                      title={transformToUpperCase(category)}
                     />
                   }
                 />
 
-                <Route path="cart" element={<CartPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
               </Route>
+            ))}
 
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
+            <Route
+              path="favorites"
+              element={
+                <ProductsGrid
+                  products={displayedFavorites}
+                  title="Favorites"
+                  isFavoritesPage
+                />
+              }
+            />
 
-          <footer className="footer">
-            <Footer setIsLoggedIn={setIsLoggedIn} />
-          </footer>
-        </>
-      ) : (
-        <Login setIsLoggedIn={setIsLoggedIn} />
+            <Route path="cart" element={<CartPage />} />
+
+            <Route path="auth" element={<Login />} />
+          </Route>
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+
+      {!isAuthOpen && (
+        <footer className="footer">
+          <Footer />
+        </footer>
       )}
     </div>
   );

@@ -4,20 +4,19 @@ import { create } from '../../api/users';
 import { addAlert } from '../../utils/helpers/helpers';
 
 import { DotLoader } from 'react-spinners';
-
-interface Props {
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { useNavigate } from 'react-router-dom';
 
 const initialInputBody = {
   email: '',
   password: '',
 };
 
-export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
+export const Login = () => {
   const [data, setData] = useState(initialInputBody);
   const [isLoading, setIsLoading] = useState(false);
   const { email, password } = data;
+
+  const navigate = useNavigate();
 
   const override: CSSProperties = {
     display: 'block',
@@ -37,8 +36,8 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
       .then(response => {
         localStorage.setItem('auth_token', response.data.token);
 
+        navigate('/');
         addAlert('success', response.data.message);
-        setIsLoggedIn(true);
         setData(initialInputBody);
       })
       .catch(error => addAlert('error', error.response.data.message))

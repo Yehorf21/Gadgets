@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { addAlert } from '../../../utils/helpers/helpers';
+import { useEffect, useState } from 'react';
 
-interface Props {
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export const Footer = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-export const Footer: React.FC<Props> = ({ setIsLoggedIn }) => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -15,6 +15,16 @@ export const Footer: React.FC<Props> = ({ setIsLoggedIn }) => {
     setIsLoggedIn(false);
     addAlert('success', 'Logged out successfully');
   };
+
+  const handleLogIn = () => navigate('auth');
+
+  useEffect(() => {
+    const authToken = localStorage.getItem('auth_token');
+
+    if (authToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <>
@@ -46,9 +56,21 @@ export const Footer: React.FC<Props> = ({ setIsLoggedIn }) => {
       </div>
 
       <div className="footer__right-section">
-        <div className="footer__text" onClick={handleLogOut}>
-          Log out
-        </div>
+        {isLoggedIn ? (
+          <button
+            className="footer__text footer__text--button"
+            onClick={handleLogOut}
+          >
+            Log out
+          </button>
+        ) : (
+          <button
+            className="footer__text footer__text--button"
+            onClick={handleLogIn}
+          >
+            Log in / Sign up
+          </button>
+        )}
 
         <button className="footer__arrow" onClick={scrollToTop} />
       </div>

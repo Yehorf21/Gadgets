@@ -84,6 +84,11 @@
     &:hover {
       color: $primary-color;
     }
+
+    &--button {
+      background: transparent;
+      border: none;
+    }
   }
 
   &__arrow {
